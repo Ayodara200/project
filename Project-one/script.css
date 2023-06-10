@@ -1,134 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+:root {
+  --Very-Light-Grayish-Blue: hsl(240, 78%, 98%);
+  --Light-Grayish-Blue: hsl(234, 14%, 74%);
+  --Grayish-Blue: hsl(233, 13%, 49%);
+  --Dark-Grayish-Blue: hsl(232, 13%, 33%);
+}
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f7f8fb;
+  min-height: 100vh;
+  background: var(--Very-Light-Grayish-Blue);
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0;
+  position: relative;
+}
+body::after{
+  position: absolute;
+  content: '';
+  top: 0;
+  right: -70%;
+  width: 100%;
+  height: 100%;
+  background: url(./images/bg-top.svg) no-repeat;
+  background-position: top right;
+  z-index: -1;
+}
+header{
+  width: 100%;
+  margin: 0 1rem;
+}
+header h1{
+  color: var(--Dark-Grayish-Blue);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+header .toggle-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.toggle-container span{
+  color: var(--Light-Grayish-Blue);
+}
+.toggle-container .toggle{
+  width: 3rem;
+  height: 1.5rem;
+  background: linear-gradient(145deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+  border-radius: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+.toggle .slider{
+  position: absolute;
+  content: '';
+  top: .15rem;
+  right: .15rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: white;
+  border-radius: 50%;
+}
+.active .slider{
+  left: .15rem;
+  margin-right: auto;
+}
+main{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  margin-top: 1rem;
+}
+main .home{
+  max-width: 320px;
+  width: 100%;
+  color: var(--Grayish-Blue);
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.1);
+  border-radius: .5rem;
+  margin: 0 auto;
+}
+.home.middle{
+  color: white;
+  background: linear-gradient(145deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+  padding: 2.5rem 1.5rem;
+}
+.home h2{
+  font-size: 3.5rem;
+  margin: 2rem 0;
+}
+.home .annual{
+  font-size: 3.5rem;
+}
+.home h2 span{
+  font-size: 2rem;
+}
+.annual{
+  display: none;
+}
+.active .annual{
+  display: inline;
+}
+.home p{
+  margin: 1rem 0;
+}
+hr{
+  height: .5px;
+  background-color: var(--Light-Grayish-Blue);
+  border: 0;
+}
+.home a{
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  color: white;
+  background: linear-gradient(145deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: .8rem 0;
+  margin-top: 1rem;
+  border-radius: .3rem;
+}
+.home a:hover{
+  background: linear-gradient(145deg, hsla(236, 72%, 79%,.8),hsla(237, 63%, 64%,.8));
+}
+.home a:active{
+  transform: translateY(1px);
+}
+.home.middle a{
+  color: hsl(237, 63%, 64%);
+  background: white;
+}
+.home.middle a:hover{
+  background: rgba(255, 255, 255, 0.8);
+}
+footer{
+  font-size: .8rem;
+}
+footer a{
+  color: hsl(237, 63%, 64%);
+}
+footer a:hover{
+  text-decoration: none;
+}
+@media(min-width: 1023px){
+  body{
+    padding: 2rem 0;
+    overflow-y: hidden;
   }
-
-  .pricing {
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  .toggle{
-    text-align: center;
-  }
-  
-  .pricing-component {
-    background-color: #ffffff;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
-    overflow: hidden;
-    max-width: 100rem;
-    width: 100%;
-  }
-  
-  .toggle {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 1rem;
-  }
-  
-  .toggle input[type="checkbox"] {
-    display: none;
-  }
-  
-  .toggle label {
-    display: inline-block;
-    width: 4rem;
-    height: 2rem;
-    background-color: #d1d4db;
-    border-radius: 1rem;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .toggle label:before {
-    content: '';
+  body::before{
     position: absolute;
-    top: 0.25rem;
-    left: 0.25rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background-color: #ffffff;
-    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(./images/bg-bottom.svg) no-repeat;
+    background-position: bottom left;
+    z-index: -1;
   }
-  
-  .toggle input[type="checkbox"]:checked + label {
-    background-color: #6c61f6;
+  body::after{
+    right: 0;
   }
-  
-  .toggle input[type="checkbox"]:checked + label:before {
-    transform: translateX(2rem);
-  }
-  
-  .pricing-plans {
-    display: flex;
+  main{
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    gap: 0;
   }
-  
-  .plan {
-    text-align: center;
-    padding: 2rem;
+  main .home{
+    margin: 0;
   }
-  
-  .plan h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #6c61f6;
-  }
-  
-  .plan .price {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  
-  .plan p {
-    margin-top: 0;
-    color: #a1a6b3;
-    font-size: 0.9rem;
-  }
-  
-  .plan ul {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 2rem;
-  }
-  
-  .plan li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .plan button {
-    background-color: #6c61f6;
-    color: #ffffff;
-    border: none;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .plan button:hover {
-    background-color: #8c80ff;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .pricing-component {
-      border-radius: 0;
-      box-shadow: none;
-    }
-  }
-  
+}
